@@ -19,7 +19,7 @@ class ofApp : public ofBaseApp{
 
         string sampleName[16] = {"KICK1.WAV","KICK2.WAV","KICK3.WAV","SNARE1.WAV","SNARE2.WAV","SNARE3.WAV","CLAVE.WAV","HHCL.WAV",
             "HHOP.WAV","PERC1.WAV","PERC2.WAV","PERC3.WAV","PERC4.WAV","PERC5.WAV","PERC6.WAV","PERC7.WAV",};
-        
+    
         int matrix[16][16] = {
         //   0 1 2 3 4 5 6 7 8
             {1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0}, //0 kick1
