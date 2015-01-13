@@ -1,2 +1,9 @@
 *.WAV
-
+.DS_Store
+# xcode
+*.pbxuser
+*.perspectivev3
+xcuserdata
+build
+*.app
+#*.a
