@@ -4,12 +4,19 @@
     TODO: update matrix via JSON file. Update rhythm matrix
  */
 void ofApp::setup(){
+    //load JSON
+    std::string file = "sequences/test.json";
+    bool parsingSuccessful = result.open(file);
+    
+    if (parsingSuccessful){
+        cout << file << endl;
+    }
     //set speed
     speed = 1.5;
     
     //find out size of beat matrix
-    rows = sizeof(matrix) / sizeof(matrix[0]);
-    columns = sizeof(matrix[0]) / sizeof(int);
+    rows = sizeof(my_matrix) / sizeof(my_matrix[0]);
+    columns = sizeof(my_matrix[0]) / sizeof(int);
     
     //load samples
     for(int j = 0; j < 16; j++){
@@ -18,14 +25,14 @@ void ofApp::setup(){
 }
 
 void ofApp::update(){
-    playSequence();
+    playSequence(current_matrix);
 }
 
 void ofApp::draw(){
     
 }
 
-void ofApp::playSequence(){
+void ofApp::playSequence(int matrix[16][16]){
     //iterate thru rhythm matrix
     for(int i = 0; i < columns; i++){
         for(int j = 0; j < rows; j++){
@@ -33,7 +40,6 @@ void ofApp::playSequence(){
                 sampleArray[j].play();
             }
         }
-    //delay between beats
         ofSleepMillis(speed*100);
     }
 }
@@ -46,6 +52,20 @@ void ofApp::keyPressed(int key){
     if(key == '2'){
         speed -=.1;
         //cout << speed << "f" << endl;
+    }if(key == '3'){
+        for(int j = 0; j < columns; j++){
+            for(int k = 0; k < rows; k++){
+                current_matrix[j][k] = my_matrix[j][k];
+            }
+        }
+        cout << my_matrix << endl;
+    }
+    if(key == '4'){
+        for(int j = 0; j < columns; j++){
+            for(int k = 0; k < rows; k++){
+                current_matrix[j][k] = my_matrix2[j][k];
+            }
+        }
     }
 }
 
